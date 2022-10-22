@@ -1,4 +1,4 @@
-package structs
+package internal
 
 import "encoding/xml"
 
@@ -61,8 +61,16 @@ type ShopItem struct {
 	IMGURLAlternative19 string `xml:"IMGURL_ALTERNATIVE_19"`
 	IMGURLAlternative20 string `xml:"IMGURL_ALTERNATIVE_20"`
 
-	IMGURLPack1 string `xml:"IMGURL_PACK_01"`
-	IMGURLPack2 string `xml:"IMGURL_PACK_02"`
+	IMGURLPack1  string `xml:"IMGURL_PACK_01"`
+	IMGURLPack2  string `xml:"IMGURL_PACK_02"`
+	IMGURLPack3  string `xml:"IMGURL_PACK_03"`
+	IMGURLPack4  string `xml:"IMGURL_PACK_04"`
+	IMGURLPack5  string `xml:"IMGURL_PACK_05"`
+	IMGURLPack6  string `xml:"IMGURL_PACK_06"`
+	IMGURLPack7  string `xml:"IMGURL_PACK_07"`
+	IMGURLPack8  string `xml:"IMGURL_PACK_08"`
+	IMGURLPack9  string `xml:"IMGURL_PACK_09"`
+	IMGURLPack10 string `xml:"IMGURL_PACK_10"`
 
 	AttachManual     string `xml:"ATTACH_MANUAL"`
 	AttachConformity string `xml:"ATTACH_CONFORMITY"`
@@ -109,145 +117,4 @@ type ShopItemOrdered struct {
 
 	AttachManual     string
 	AttachConformity string
-}
-
-func (i *ShopItem) toShopItemOrdered() ShopItemOrdered {
-	return ShopItemOrdered{
-		Product:           i.Product,
-		ProductNo:         i.ProductNo,
-		ProductNo2:        i.ProductNo2,
-		Ean:               i.Ean,
-		Unit:              i.Unit,
-		Pack:              i.Pack,
-		Weight:            i.Weight,
-		Manufacturer:      i.Manufacturer,
-		PriceVat:          i.PriceVat,
-		PriceEShopVat:     i.PriceEShopVat,
-		PriceVoc:          i.PriceVoc,
-		PriceEShopPackVat: i.PriceEShopPackVat,
-		PricePackVat:      i.PricePackVat,
-		Price:             i.Price,
-		PricePack:         i.PricePack,
-		Vat:               i.Vat,
-		Dues:              i.Dues,
-		DiscountGroup:     i.DiscountGroup,
-		Category:          i.Category,
-		CategoryID:        i.CategoryID,
-		EtimTrida:         i.EtimTrida,
-		Description:       i.Description,
-		DescriptionBasic:  i.DescriptionBasic,
-		Related:           i.Related,
-		Action:            i.Action,
-		Novelty:           i.Novelty,
-		Sale:              i.Sale,
-		Params:            i.Params,
-		URL:               i.URL,
-
-		ImagesURLs: combineURLs(i),
-
-		AttachManual:     i.AttachManual,
-		AttachConformity: i.AttachConformity,
-	}
-}
-
-func combineURLs(i *ShopItem) []string {
-	list := []string{}
-
-	if i.IMGURL != "" {
-		list = append(list, i.IMGURL)
-	}
-
-	if i.IMGURLAlternative1 != "" {
-		list = append(list, i.IMGURLAlternative1)
-	}
-
-	if i.IMGURLAlternative2 != "" {
-		list = append(list, i.IMGURLAlternative2)
-	}
-
-	if i.IMGURLAlternative2 != "" {
-		list = append(list, i.IMGURLAlternative2)
-	}
-
-	if i.IMGURLAlternative3 != "" {
-		list = append(list, i.IMGURLAlternative3)
-	}
-
-	if i.IMGURLAlternative4 != "" {
-		list = append(list, i.IMGURLAlternative4)
-	}
-
-	if i.IMGURLAlternative5 != "" {
-		list = append(list, i.IMGURLAlternative5)
-	}
-
-	if i.IMGURLAlternative6 != "" {
-		list = append(list, i.IMGURLAlternative6)
-	}
-
-	if i.IMGURLAlternative7 != "" {
-		list = append(list, i.IMGURLAlternative7)
-	}
-
-	if i.IMGURLAlternative8 != "" {
-		list = append(list, i.IMGURLAlternative8)
-	}
-
-	if i.IMGURLAlternative9 != "" {
-		list = append(list, i.IMGURLAlternative9)
-	}
-
-	if i.IMGURLAlternative10 != "" {
-		list = append(list, i.IMGURLAlternative10)
-	}
-
-	if i.IMGURLAlternative11 != "" {
-		list = append(list, i.IMGURLAlternative11)
-	}
-
-	if i.IMGURLAlternative12 != "" {
-		list = append(list, i.IMGURLAlternative12)
-	}
-
-	if i.IMGURLAlternative13 != "" {
-		list = append(list, i.IMGURLAlternative13)
-	}
-
-	if i.IMGURLAlternative14 != "" {
-		list = append(list, i.IMGURLAlternative14)
-	}
-
-	if i.IMGURLAlternative15 != "" {
-		list = append(list, i.IMGURLAlternative15)
-	}
-
-	if i.IMGURLAlternative16 != "" {
-		list = append(list, i.IMGURLAlternative16)
-	}
-
-	if i.IMGURLAlternative17 != "" {
-		list = append(list, i.IMGURLAlternative17)
-	}
-
-	if i.IMGURLAlternative18 != "" {
-		list = append(list, i.IMGURLAlternative18)
-	}
-
-	if i.IMGURLAlternative19 != "" {
-		list = append(list, i.IMGURLAlternative19)
-	}
-
-	if i.IMGURLAlternative20 != "" {
-		list = append(list, i.IMGURLAlternative20)
-	}
-
-	if i.IMGURLPack1 != "" {
-		list = append(list, i.IMGURLPack1)
-	}
-
-	if i.IMGURLPack2 != "" {
-		list = append(list, i.IMGURLPack2)
-	}
-
-	return list
 }
