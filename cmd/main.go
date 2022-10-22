@@ -54,5 +54,13 @@ func main() {
 			fmt.Println("failed to download additional information files")
 		}
 
+		err = internal.CreateInformation(orderedFile, item.ProductNo2, fmt.Sprintf("%s_info.txt",
+			item.ProductNo2))
+		if err != nil {
+			fmt.Println("failed to to create information file")
+		}
+
+		fmt.Printf("Finished download all pictures and information of %s product \n",
+			orderedFile.ProductNo2)
 	}
 }
