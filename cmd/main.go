@@ -4,7 +4,8 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
-	"tomitaXmlParser/internal"
+
+	"github.com/MantasSilanskas/Tomita-EMOS-XML-Parcer/internal"
 )
 
 func main() {
