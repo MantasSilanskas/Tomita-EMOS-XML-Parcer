@@ -5,7 +5,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/MantasSilanskas/Tomita-EMOS-XML-Parcer/internal"
+	"Tomita-EMOS-XML-Parcer/internal"
 )
 
 func main() {
