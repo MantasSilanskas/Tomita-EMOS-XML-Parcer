@@ -273,7 +273,7 @@ func CreateInformation(f ShopItemOrdered, folder, fileName string) error {
 	file.WriteString(fmt.Sprintf("Sale: %s \n", f.Sale))
 
 	for i, v := range f.Params {
-		file.WriteString(fmt.Sprintf("Param %d:", i+1))
+		file.WriteString(fmt.Sprintf("Param %d: \n", i+1))
 		file.WriteString(fmt.Sprintf("Param name: %s \n", v.ParamName))
 		file.WriteString(fmt.Sprintf("Order: %s \n", v.Order))
 		file.WriteString(fmt.Sprintf("Val: %s \n", v.Val))
