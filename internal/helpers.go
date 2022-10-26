@@ -213,21 +213,19 @@ func DownloadFile(folder, fileName, url string) error {
 	return nil
 }
 
-func DownloadAdditionalInfo(f ShopItemOrdered) error {
-	if f.AttachManual != "" {
-		err := DownloadFile(f.ProductNo2, fmt.Sprintf("%s_%s.pdf", f.ProductNo2,
-			"manual"), f.AttachManual)
-		if err != nil {
-			return err
-		}
+func DownloadAttachManual(folder, fileName, url string) error {
+	err := DownloadFile(folder, fileName, url)
+	if err != nil {
+		return err
 	}
 
-	if f.AttachConformity != "" {
-		err := DownloadFile(f.ProductNo2, fmt.Sprintf("%s_%s.pdf", f.ProductNo2,
-			"conformity"), f.AttachConformity)
-		if err != nil {
-			return err
-		}
+	return nil
+}
+
+func DownloadAttachConformity(folder, fileName, url string) error {
+	err := DownloadFile(folder, fileName, url)
+	if err != nil {
+		return err
 	}
 
 	return nil

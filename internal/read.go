@@ -16,7 +16,8 @@ func ReadXMLFile(fileName string) (Shop, error) {
 		return Shop{}, err
 	}
 
-	fmt.Printf("Succesfully opened %s \n", fileName)
+	fmt.Printf("Successfully opened %s \n", fileName)
+	fmt.Println("------------------------------------------------------------")
 
 	// defer the closing of our xmlFile so that we can parse it later on
 	defer xmlFile.Close()
