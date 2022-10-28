@@ -5,7 +5,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/MantasSilanskas/Tomita-EMOS-XML-Parcer/internal"
+	internal "github.com/MantasSilanskas/Tomita-EMOS-XML-Parcer/internal/xml"
 )
 
 func main() {
@@ -19,7 +19,7 @@ func main() {
 	fmt.Scanf("%s", &fileName)
 	fmt.Println("------------------------------------------------------------")
 
-	shop, err := internal.ReadXMLFile(fileName)
+	shop, err := xml.ReadXMLFile(fileName)
 	if err != nil {
 		fmt.Printf("failed to read xml file")
 		return
@@ -66,7 +66,7 @@ func main() {
 		}
 
 		if item.AttachManual != "" {
-			err = internal.DownloadAttachManual(item.ProductNo2, fmt.Sprintf("%s_%s.pdf",
+			err = internal.DownloadFile(item.ProductNo2, fmt.Sprintf("%s_%s.pdf",
 				item.ProductNo2, "manual"), item.AttachManual)
 			if err != nil {
 				errCount++
@@ -74,7 +74,7 @@ func main() {
 		}
 
 		if item.AttachConformity != "" {
-			err = internal.DownloadAttachConformity(item.ProductNo2, fmt.Sprintf("%s_%s.pdf",
+			err = internal.DownloadFile(item.ProductNo2, fmt.Sprintf("%s_%s.pdf",
 				item.ProductNo2, "conformity"), item.AttachConformity)
 			if err != nil {
 				errCount++

@@ -5,9 +5,11 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+
+	"github.com/MantasSilanskas/Tomita-EMOS-XML-Parcer/internal/structs"
 )
 
-func ReadXMLFile(fileName string) (Shop, error) {
+func ReadXMLFile(fileName string) (structs.Shop, error) {
 	// Open our xmlFile
 	xmlFile, err := os.Open(fileName)
 	// if we os.Open returns an error then handle it
