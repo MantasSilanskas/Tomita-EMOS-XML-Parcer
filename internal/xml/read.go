@@ -14,8 +14,7 @@ func ReadXMLFile(fileName string) (structs.Shop, error) {
 	xmlFile, err := os.Open(fileName)
 	// if we os.Open returns an error then handle it
 	if err != nil {
-		fmt.Printf("Failed to open %s", fileName)
-		return structs.Shop{}, err
+		return structs.Shop{}, fmt.Errorf("failed to open %s file", fileName)
 	}
 
 	fmt.Printf("Successfully opened %s \n", fileName)
@@ -26,8 +25,7 @@ func ReadXMLFile(fileName string) (structs.Shop, error) {
 
 	byteValue, err := ioutil.ReadAll(xmlFile)
 	if err != nil {
-		fmt.Println("Failed to read xml file")
-		return structs.Shop{}, err
+		return structs.Shop{}, fmt.Errorf("failed to read xml file")
 	}
 
 	// we initialize our Shop
@@ -37,7 +35,7 @@ func ReadXMLFile(fileName string) (structs.Shop, error) {
 	// xmlFiles content into 'results' which we defined above
 	err = xml.Unmarshal(byteValue, &results)
 	if err != nil {
-		fmt.Println(err)
+		return structs.Shop{}, fmt.Errorf("failed to unmarshal data")
 	}
 
 	return results, nil

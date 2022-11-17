@@ -22,7 +22,7 @@ func main() {
 
 	shop, err := xml.ReadXMLFile(fileName)
 	if err != nil {
-		fmt.Printf("failed to read xml file")
+		fmt.Printf("failed to read xml file error: %s \n", err)
 		return
 	} else {
 		fmt.Printf("Successfully extracted data from %s starting download of the pictures. \n", fileName)
@@ -49,7 +49,7 @@ func main() {
 
 		if err := os.MkdirAll(path, os.ModePerm); err != nil {
 			if err.Error() == "mkdir products: file exists" {
-				fmt.Println("Products dict exists already")
+				fmt.Printf("%s dict exists already \n", path)
 			}
 		}
 
