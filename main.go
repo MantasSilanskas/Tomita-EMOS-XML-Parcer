@@ -5,7 +5,8 @@ import (
 	"os"
 	"path/filepath"
 
-	internal "github.com/MantasSilanskas/Tomita-EMOS-XML-Parcer/internal/xml"
+	"github.com/MantasSilanskas/Tomita-EMOS-XML-Parcer/internal/utils"
+	"github.com/MantasSilanskas/Tomita-EMOS-XML-Parcer/internal/xml"
 )
 
 func main() {
@@ -59,14 +60,14 @@ func main() {
 				fileName = fmt.Sprintf("%s.jpg", item.ProductNo2)
 			}
 
-			err = internal.DownloadFile(item.ProductNo2, fileName, g)
+			err = utils.DownloadFile(item.ProductNo2, fileName, g)
 			if err != nil {
 				errCount++
 			}
 		}
 
 		if item.AttachManual != "" {
-			err = internal.DownloadFile(item.ProductNo2, fmt.Sprintf("%s_%s.pdf",
+			err = utils.DownloadFile(item.ProductNo2, fmt.Sprintf("%s_%s.pdf",
 				item.ProductNo2, "manual"), item.AttachManual)
 			if err != nil {
 				errCount++
@@ -74,14 +75,14 @@ func main() {
 		}
 
 		if item.AttachConformity != "" {
-			err = internal.DownloadFile(item.ProductNo2, fmt.Sprintf("%s_%s.pdf",
+			err = utils.DownloadFile(item.ProductNo2, fmt.Sprintf("%s_%s.pdf",
 				item.ProductNo2, "conformity"), item.AttachConformity)
 			if err != nil {
 				errCount++
 			}
 		}
 
-		err = internal.CreateInformation(orderedFile, item.ProductNo2, fmt.Sprintf("%s_info.txt",
+		err = utils.CreateInformation(orderedFile, item.ProductNo2, fmt.Sprintf("%s_info.txt",
 			item.ProductNo2))
 		if err != nil {
 			fmt.Println("failed to to create information file")
@@ -99,9 +100,6 @@ func main() {
 		if successful%10 == 0 {
 			fmt.Printf("Pictures and information of %d has been downloaded succesfully. \n", successful)
 		}
-
-		// fmt.Printf("Finished download all pictures and information of %s product \n",
-		// 	orderedFile.ProductNo2)
 	}
 
 	fmt.Println("------------------------------------------------------------")

@@ -1,4 +1,4 @@
-package internal
+package xml
 
 import (
 	"encoding/xml"
@@ -15,7 +15,7 @@ func ReadXMLFile(fileName string) (structs.Shop, error) {
 	// if we os.Open returns an error then handle it
 	if err != nil {
 		fmt.Printf("Failed to open %s", fileName)
-		return Shop{}, err
+		return structs.Shop{}, err
 	}
 
 	fmt.Printf("Successfully opened %s \n", fileName)
@@ -27,11 +27,11 @@ func ReadXMLFile(fileName string) (structs.Shop, error) {
 	byteValue, err := ioutil.ReadAll(xmlFile)
 	if err != nil {
 		fmt.Println("Failed to read xml file")
-		return Shop{}, err
+		return structs.Shop{}, err
 	}
 
 	// we initialize our Shop
-	var results Shop
+	var results structs.Shop
 
 	// we unmarshal our byteArray which contains our
 	// xmlFiles content into 'results' which we defined above
