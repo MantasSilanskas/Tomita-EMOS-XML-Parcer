@@ -92,3 +92,9 @@ func CreateInformation(f structs.ShopItemOrdered, folder, fileName string) error
 
 	return nil
 }
+
+func CreateLogsFile(fileName string) (*os.File, error) {
+	filePath := filepath.Join("products", fileName)
+
+	return os.Create(filePath)
+}

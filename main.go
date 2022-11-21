@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"time"
 
 	"github.com/MantasSilanskas/Tomita-EMOS-XML-Parcer/internal/utils"
 	"github.com/MantasSilanskas/Tomita-EMOS-XML-Parcer/internal/xml"
@@ -34,6 +35,11 @@ func main() {
 		if err.Error() == "mkdir products: file exists" {
 			fmt.Println("Products dict exists already")
 		}
+	}
+
+	logsFile, err := utils.CreateLogsFile(fmt.Sprintf("%s_logs.txt", time.Now().Format("2006-01-02 15:04:05")))
+	if err != nil {
+		fmt.Println("failed to create logs file")
 	}
 
 	for _, item := range shop.Items {
@@ -91,10 +97,16 @@ func main() {
 
 		if errCount == 0 {
 			successful++
+
+			logsFile.WriteString(fmt.Sprintf(
+				"Succesfully downloaded pictures and information of %s \n", orderedFile.ProductNo2))
 		} else {
 			unsuccessful = append(unsuccessful, orderedFile.ProductNo2)
 			fmt.Printf("Failed to download all pictures and information of %s product \n",
 				orderedFile.ProductNo2)
+
+			logsFile.WriteString(fmt.Sprintf(
+				"Failed to download pictures and information of %s \n", orderedFile.ProductNo2))
 		}
 
 		if successful%10 == 0 {
